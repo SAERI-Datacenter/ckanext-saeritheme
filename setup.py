@@ -78,12 +78,10 @@ setup(
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
+    # XXX arb removed [babel.extractors] ckan = ckan.lib.extract:extract_ckan
     entry_points='''
         [ckan.plugins]
         saeritheme=ckanext.saeritheme.plugin:SaerithemePlugin
-
-        [babel.extractors]
-        ckan = ckan.lib.extract:extract_ckan
     ''',
 
     # If you are changing from the default layout of your extension, you may
