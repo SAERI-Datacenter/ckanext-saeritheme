@@ -1,0 +1,9 @@
+{# See /usr/lib/ckan/default/src/ckan/ckan/templates/package/search.html #}
+
+{% ckan_extends %}
+
+{% block secondary_content %}
+  {% snippet "spatial/snippets/spatial_query.html" %}
+  {# Insert the contents of the original featured_group block: #}
+  {{ super() }}
+{% endblock %}
