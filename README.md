@@ -1,5 +1,11 @@
 # ckanext-saeritheme
 
+## Requirements
+
+This plugin now requires the spatial extension
+https://docs.ckan.org/projects/ckanext-spatial/en/latest/
+because it adds a map widget to the search filter column.
+
 ## Installation
 
 first activate your virtual environment
