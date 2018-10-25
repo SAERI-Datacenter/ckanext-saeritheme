@@ -19,6 +19,8 @@ then add `saeritheme` to the `ckan.plugins` line in your ckan config file and re
 
 ## Updating
 
+```
 cd /usr/lib/ckan/default/src/ckanext-saeritheme
 git pull
 sudo service apache2 restart
+```
