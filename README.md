@@ -1,7 +1,10 @@
 # ckanext-saeritheme
 
 This CKAN plugin implements the changes required to customise a CKAN installation specifically for SAERI.
+
 The main things done in this plugin are: display the SAERI logo, and display a map in the dataset create/update and dataset search pages. Note that the map display has other requirements (all the spatial plugin configured correctly and the saerischema plugin).
+
+This plugin also contains all of the logo images required for the organisations which will be created within CKAN.
 
 ## Requirements
 
@@ -18,7 +21,16 @@ git clone https://github.com/SAERI-Datacenter/ckanext-saeritheme.git
 cd ckanext-saeritheme
 python setup.py develop
 ```
-then add `saeritheme` to the `ckan.plugins` line in your ckan config file and restart the web server with sudo service apache2 restart
+
+Add `saeritheme` to the `ckan.plugins` line in your ckan config file (typically production.ini).
+
+Make the logo images accessible (CKAN expects them to be in the uploads folder) using `sudo ln -s /usr/lib/ckan/default/src/ckanext-saeritheme/ckanext/saeritheme/public/logo /var/lib/ckan/default/storage/uploads/group/logo`
+
+Restart the web server with `sudo service apache2 restart`
+
+## Customising
+
+The ckanext/saeritheme/tools directory contains some tools for creating organisations.
 
 ## Updating
 
@@ -30,7 +42,7 @@ sudo service apache2 restart
 
 ## Customising
 
-Images (and other resources) which are required by the HTML files can be placed in the directory: `ckanext/saeritheme/public`.
+Images (and other resources) which are required by the HTML files can be placed in the directory: `ckanext/saeritheme/public`.  The logo images in there are referenced directly by the symbolic link created earlier so can be updated live.
 
 Home page logo - we display the SAERI logo instead of the "promoted" field by editing: `ckanext/saeritheme/templates/home/snippets/promoted.html`. The logo image is stored in the public directory (see above).
 
