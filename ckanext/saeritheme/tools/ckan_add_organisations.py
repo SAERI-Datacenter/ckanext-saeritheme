@@ -41,19 +41,28 @@ def get_existing_organisations():
 # Add one organisation to CKAN from the CSV data given in row
 # i.e. row['organisation'] and organisation_name and organisation_logo.
 def add_organisation(row):
-	print("Add %s %s = %s" % (row['organisation'], row['organisation_logo'], row['organisation_name']))
+	# Sanitise the input
 	name_lowercase = row['organisation'].lower()
+	if row['organisation_logo'] == '':
+		image_with_path = ''
+	else:
+		image_with_path = "/logo/%s" % row['organisation_logo']
+	fullname = row['organisation_name']
+	print("Add %s %s = %s" % (name_lowercase, image_with_path, fullname))
+
 	# First check that the organisation doesn't already exist
 	if name_lowercase in organisations:
 		#print("%s already in %s" % (name_lowercase, organisations))
 		print("WARNING %s already in use, not added" % name_lowercase)
 		return
+
 	# Create a dictionary with the info we need to add to CKAN
 	org_dict = {
 		'name' : name_lowercase,
 		'title': row['organisation_name'],
-		'image_url': "/logo/%s" % row['organisation_logo'] }
+		'image_url': image_with_path }
 	print("Adding %s" % org_dict)
+
 	result = ckan.call_action('organization_create', org_dict)
 	#pprint(result)
 	if result['approval_status'] == 'approved':
@@ -86,44 +95,3 @@ RemoteCKAN.close(ckan)
 fp.close()
 
 exit(0)
-
-# ---------------------
-
-# Put the details of the dataset we're going to create into a dict.
-dataset_dict = {
-    'name': 'test_dataset',
-    'notes': 'A long description of my test dataset',
-    'owner_org': 'saeri'
-}
-
-# Use the json module to dump the dictionary to a string for posting.
-data_string = urllib.quote(json.dumps(dataset_dict))
-
-# We'll use the package_create function to create a new dataset.
-request = urllib2.Request('http://publicamundi/api/action/package_create')
-
-
-# Use the json module to load CKAN's response into a dictionary.
-response_dict = json.loads(response.read())
-assert response_dict['success'] is True
-
-# package_create returns the created package as its result.
-created_package = response_dict['result']
-pprint.pprint(created_package)
-
-#!/usr/bin/env python2
-
-
-
-
-# Two ways to call an action:
-datasets = ckan.action.package_search(include_private=True, include_drafts=True, q='"test-dataset-3"')
-#datasets = ckan.call_action('package_search', {'include_private':True, 'include_drafts':True} )
-#print(datasets['count'])
-#pprint(datasets)
-
-for result in datasets['results']:
-	print("%s = %s" % ( result['id'], result['name']))
-	for resource in result['resources']:
-		print("  resource %s" % resource['url'])
-
