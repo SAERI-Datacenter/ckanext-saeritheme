@@ -25,6 +25,7 @@ python setup.py develop
 Add `saeritheme` to the `ckan.plugins` line in your ckan config file (typically production.ini).
 
 Make the logo images accessible (CKAN expects them to be in the uploads folder) using `sudo ln -s /usr/lib/ckan/default/src/ckanext-saeritheme/ckanext/saeritheme/public/logo /var/lib/ckan/default/storage/uploads/group/logo`
+(if you are interested, this is because it is hard-coded in here: /usr/lib/ckan/default/src/ckan/ckan/lib/dictization/model_dictize.py)
 
 Restart the web server with `sudo service apache2 restart`
 
