@@ -1,6 +1,12 @@
 # 1.02 arb Thu Jan 17 16:23:06 GMT 2019 - added search filter facets
 # XXX arb commented out toolkit.add_resource
 
+# Theme plugins are documented here:
+# https://docs.ckan.org/en/latest/theming/templates.html
+# Search filter facets are documented here:
+# https://docs.ckan.org/en/latest/extensions/plugin-interfaces.html?highlight=ifacet#ckan.plugins.interfaces.IFacets
+# https://stackoverflow.com/questions/32175329/how-to-add-a-search-filter-facet-option-for-a-custom-field-in-ckan
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
