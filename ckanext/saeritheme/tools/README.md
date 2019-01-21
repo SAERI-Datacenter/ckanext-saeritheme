@@ -22,15 +22,18 @@ After entering your virtual environment you should `pip install ckanapi`
 
 # List organisations already in CKAN
 
-Run `ckan_list_organisations.py`
+Run `./ckan_list_organisations.py`
 
 # Add organisations from CSV into CKAN
 
-Run `ckan_add_organisations.py`
+Run `./ckan_add_organisations.py`
+
+If an organisation already exists then it will be updated.
 
 # Update the organisations
 
 There are some organisations which do not have a logo image.
+They will show the CKAN default image.
 
 Do NOT change the organisation code because it will have been
 embedded into dataset records in the database.
@@ -99,3 +102,5 @@ Differences:
 ---
 > UNIMSU,Michigan State University,unimsu.png,1
 ```
+
+Also on 21 Jan 2019 updated some logo files and a couple of other changes, see the commit for details.
