@@ -1,13 +1,16 @@
 {% ckan_extends %}
+{# Extend the 'promoted' section of the home page #}
+{# Note that some text is also configured in the ckan config file (see the ckan.site_* items) #}
 
+{# This text overlays the bottom of the image shown in the 'promoted' section #}
 {% block home_image_caption %}
-  {{ _("SAERI CKAN's data previewing tool has many powerful features") }}
+  {{ _("South Atlantic Environmental Research Institute") }}
 {% endblock %}
 
-{# Replace the promoted image. #}
+{# Replace the 'promoted' image with our logo #}
 {% block home_image_content %}
   <a class="media-image" href="#">
-    <img src="/saeri420x220.png" alt="Featured image is SAERI logo"
+    <img src="/saeri420x220.png" alt="SAERI logo"
          width="420" height="220" />
   </a>
 {% endblock %}
