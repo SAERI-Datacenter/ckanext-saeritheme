@@ -1,3 +1,36 @@
+# Installation
+
+You MUST create two files: `ckan_ip.txt` contains the IP address of your CKAN server, or it may be the name `localhost`, and `ckan_api_key.txt` contains the API key of your sysadmin
+ account (or an account which has sufficient permissions). The API key can be found once logged into CKAN on your profile page (it's at the bottom of the left-hand column).
+These values were hard-coded into the scripts which caused problems so they are now read from config files.
+
+After entering your virtual environment you should `pip install ckanapi`
+
+Remember to make the symbolic link as described in this plugin's README.
+
+# Groups
+
+List of groups (themes or topic categories) to be created inside CKAN.
+
+Master list is `topic_categories.csv`
+
+## File format
+
+csvname,group,title,description,logo
+
+The csvname is the name used in the topic_category column of the metadata_FK CSV file
+so that we can map from the topic_category field to a group name.
+The group field is the short group name which is used in the URL.
+The title is a one line description and the description can be longer.
+The logo file is the image filename which will have /logo/ prepended
+and will be found via the symbolic link as described above.
+
+## Add groups from CSV into CKAN
+
+Run `./ckan_add_groups.py`
+
+If a group already exists then it will be updated.
+
 # Organisations
 
 List of organisations to be created inside CKAN.
@@ -8,37 +41,30 @@ Modified by arb grouped_organisations_ready_arb.csv (for changes see below)
 
 Note that it is spelled with a z inside CKAN as organizations.
 
-# File format
+## File format
 
 organisation,organisation_name,organisation_logo,records_count
 
-# Installation
-
-First edit all scripts to change the IP address of the CKAN server
-and the API key of the system administrator
-(the one given in the script will not work).
-
-After entering your virtual environment you should `pip install ckanapi`
-
-# List organisations already in CKAN
+## List organisations already in CKAN
 
 Run `./ckan_list_organisations.py`
 
-# Add organisations from CSV into CKAN
+## Add organisations from CSV into CKAN
 
 Run `./ckan_add_organisations.py`
 
 If an organisation already exists then it will be updated.
 
-# Update the organisations
+## Update the organisations
 
 There are some organisations which do not have a logo image.
 They will show the CKAN default image.
+This could be modified to show the nologo_cube.png file if required.
 
 Do NOT change the organisation code because it will have been
 embedded into dataset records in the database.
 
-# Changes by arb
+## Changes by arb
 
 Modified the list of organisations to correct some errors such as spaces, duplicated entry, capitalisation, etc. Also renamed .jpeg to .jpg and made all logo filenames lowercase (they were already lowercase in the CSV but not as files).
 ```

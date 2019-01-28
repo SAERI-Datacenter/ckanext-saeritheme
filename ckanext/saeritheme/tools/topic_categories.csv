@@ -1,0 +1,19 @@
+csvname,group,title,description,logo
+biota,biota,Biota,,nologo_cube.png
+boundaries,boundaries,Boundaries,,boundaries2.png
+climatology-meteorology-atmosphere,atmosphere,"Atmosphere, Climatology, Meteorology",,climatology.png
+economy,economy,Economy,,economy.png
+elevation,elevation,Elevation and Depth,,elevation3.png
+environment,environment,Environment,,environment2.png
+farming,farming,Farming,,farming1.png
+geoscientific information,geoscience,Geoscience,,geoscientific.png
+imagery base maps earth cover,imagery,"Imagery, Base maps, Earth cover",,images2.png
+inland waters,inlandwaters,Inland Waters,,inland_waters.png
+intelligence-military,military,Military,,military.png
+location,location,Location,,location.png
+oceans,oceans,Oceans,,oceans.png
+planning and cadastre,cadastre,Planning and Cadastre,,planning_cadastre2.png
+society,society,Society,,society.png
+structure,structure,Structure,,structure.png
+transportation,transportation,Transportation,,transportation.png
+utilities-communications,utilities,Utilities and Communications,,utilities.png
