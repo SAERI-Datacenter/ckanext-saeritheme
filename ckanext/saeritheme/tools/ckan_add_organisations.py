@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# 1.02 arb Mon 28 Jan 14:53:57 GMT 2019 - read config from files.
 # 1.01 arb Mon Jan 21 13:58:21 GMT 2019 - update if already exists. Check logo file exists.
 
 # Create all organisations from a CSV file.
@@ -15,8 +16,6 @@ from ckanapi import RemoteCKAN
 
 # Configuration
 csv_filename="grouped_organisations_ready_arb.csv"
-ckan_ip = "172.16.92.142"
-api_key = "0317c21c-7d04-48df-8f1b-9989edbd6165"
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 logo_dir = "../public/logo"
 
@@ -103,6 +102,10 @@ def add_organisation(row):
 
 # -----------------------------------------------------------------------
 # MAIN
+
+# Read the configuration
+ckan_ip = open("ckan_ip.txt").read().replace('\n','')
+api_key = open("ckan_api_key.txt").read().replace('\n','')
 
 # Read in the CSV file
 fp = open(csv_filename)
