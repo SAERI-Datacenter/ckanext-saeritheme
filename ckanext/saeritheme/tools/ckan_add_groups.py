@@ -77,7 +77,7 @@ def add_group(row):
 		create_or_update_action = 'group_patch' # not group_update which cleans it all first
 		# Find the id of the given group to update this exact one
 		group_dict['id'] = [i for i in groups_data if i['name']==group_name][0]['id']
-		group_dict['clear_upload'] = True # so that a change to image_url is forced
+		#group_dict['clear_upload'] = True # so that a change to image_url is forced
 
 	# Create a dictionary with the info we need to add to CKAN
 	group_dict['name'] = group_name
