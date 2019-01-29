@@ -4,7 +4,7 @@ This CKAN plugin implements the changes required to customise a CKAN installatio
 
 The main things done in this plugin are: display the SAERI logo, and display a map in the dataset create/update and dataset search pages. Note that the map display has other requirements (all the spatial plugin configured correctly and the saerischema plugin).
 
-This plugin also contains all of the logo images required for the organisations which will be created within CKAN.
+This plugin also contains all of the logo images required for the organisations and groups (themes) which will be created within CKAN.
 
 ## Requirements
 
@@ -14,7 +14,7 @@ because it adds a map widget to the search filter column.
 
 ## Installation
 
-first activate your virtual environment
+first activate your virtual environment, then
 ```
 cd /usr/lib/ckan/default/src
 git clone https://github.com/SAERI-Datacenter/ckanext-saeritheme.git
@@ -22,10 +22,12 @@ cd ckanext-saeritheme
 python setup.py develop
 ```
 
-Add `saeritheme` to the `ckan.plugins` line in your ckan config file (typically production.ini).
+Add `saeritheme` to the `ckan.plugins` line in your ckan config file (typically `/etc/ckan/default/production.ini`).
 
-Make the logo images accessible (CKAN expects them to be in the uploads folder) using `sudo ln -s /usr/lib/ckan/default/src/ckanext-saeritheme/ckanext/saeritheme/public/logo /var/lib/ckan/default/storage/uploads/group/logo`
-(if you are interested, this is because it is hard-coded in here: /usr/lib/ckan/default/src/ckan/ckan/lib/dictization/model_dictize.py)
+Make the logo images accessible
+using `sudo ln -s /usr/lib/ckan/default/src/ckanext-saeritheme/ckanext/saeritheme/public/logo /var/lib/ckan/default/storage/uploads/group/logo`
+(this is because CKAN expects them to be in the uploads folder, 
+it is hard-coded in here: `/usr/lib/ckan/default/src/ckan/ckan/lib/dictization/model_dictize.py`)
 
 Restart the web server with `sudo service apache2 restart`
 
