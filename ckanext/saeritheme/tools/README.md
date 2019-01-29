@@ -31,6 +31,10 @@ Run `./ckan_add_groups.py`
 
 If a group already exists then it will be updated.
 
+## Rename Groups to Themes
+
+Run `rename_groups_to_themes.sh` to change the wording of Groups in the interface to use Themes instead. Does not replace all occurrences, only the main ones. This modifies your ckan installation outside this plugin.
+
 # Organisations
 
 List of organisations to be created inside CKAN.
