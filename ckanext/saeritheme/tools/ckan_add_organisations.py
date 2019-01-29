@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# 1.03 arb Tue 29 Jan 12:42:01 GMT 2019 - use nologo_cube.png if no logo specified or found.
 # 1.02 arb Mon 28 Jan 14:53:57 GMT 2019 - read config from files.
 # 1.01 arb Mon Jan 21 13:58:21 GMT 2019 - update if already exists. Check logo file exists.
 
@@ -18,6 +19,7 @@ from ckanapi import RemoteCKAN
 csv_filename="grouped_organisations_ready_arb.csv"
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 logo_dir = "../public/logo"
+logo_unknown_path = "/logo/nologo_cube.png"
 
 # CSV fields are:
 # organisation,organisation_name,organisation_logo,records_count
@@ -60,13 +62,13 @@ def add_organisation(row):
 
 	# Find the logo image
 	if row['organisation_logo'] == '':
-		image_with_path = ''
+		image_with_path = logo_unknown_path
 	else:
 		if os.path.isfile("%s/%s" % (logo_dir, row['organisation_logo'])):
 			image_with_path = "/logo/%s" % row['organisation_logo']
 		else:
 			print("WARNING: %s logo %s file not found" % (name_lowercase, row['organisation_logo']))
-			image_with_path = ''
+			image_with_path = logo_unknown_path
 
 	fullname = row['organisation_name']
 	print("Add %s %s = %s" % (name_lowercase, image_with_path, fullname))
@@ -78,10 +80,10 @@ def add_organisation(row):
 	create_or_update_action = 'organization_create'
 	if name_lowercase in organisations_names:
 		print("NOTE: %s already exists, will update" % name_lowercase)
-		create_or_update_action = 'organization_patch' # not organization_update which cleans it all first
+		create_or_update_action = 'organization_patch' # organization_patch OR organization_update (latter cleans it all first)
 		# Find the id of the given organisation to update this exact one
 		org_dict['id'] = [i for i in organisations_data if i['name']==name_lowercase][0]['id']
-		org_dict['clear_upload'] = True # so that a change to image_url is forced
+		#org_dict['clear_upload'] = True # so that a change to image_url is forced, only use if image has actually changed
 
 	# Create a dictionary with the info we need to add to CKAN
 	org_dict['name'] = name_lowercase
