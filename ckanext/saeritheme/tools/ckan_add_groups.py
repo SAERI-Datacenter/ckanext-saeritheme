@@ -20,6 +20,8 @@ logo_dir = "../public/logo"
 
 # CSV fields are:
 # csvname,group,description,logo
+# eg.
+# inland waters,inlandwaters,Inland Waters,,inland_waters.png
 
 # -----------------------------------------------------------------------
 # field names which can be set in a group:
@@ -47,8 +49,7 @@ def get_existing_groups_names(groups_data):
 
 
 # ---------------------------------------------------------------------
-# Add one organisation to CKAN from the CSV data given in row
-# i.e. row['organisation'] and organisation_name and organisation_logo.
+# Add one group to CKAN from the CSV data given in row
 def add_group(row):
 	group_name = row['group']
 	group_title = row['title']
