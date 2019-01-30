@@ -24,14 +24,14 @@ cd /usr/lib/ckan/default/src/ckan
 python setup.py update_catalog --locale ${locale}
 
 # Make the modifications to the translation
-sed -e 's/^msgstr "Groups"/msgstr "Themes"/'  $message_source
-sed -e 's/^msgstr "Group"/msgstr "Theme"/'  $message_source
-sed -e 's/^msgstr "Add Group"/msgstr "Add Theme"/'  $message_source
-sed -e 's/^msgstr "Edit Group"/msgstr "Edit Theme"/'  $message_source
-sed -e 's/^msgstr "Create Group"/msgstr "Create Theme"/'  $message_source
-sed -e 's/^msgstr "Update Group"/msgstr "Update Theme"/'  $message_source
-sed -e 's/^msgstr "What are Groups?"/msgstr "What are Themes?"/'  $message_source
-sed -e 's/^"You can use CKAN Groups to create and manage collections of datasets. "/"You can use CKAN Themes to create and manage collections of datasets. "/'  $message_source
+sed -i -e 's/^msgstr "Groups"/msgstr "Themes"/'  $message_source
+sed -i -e 's/^msgstr "Group"/msgstr "Theme"/'  $message_source
+sed -i -e 's/^msgstr "Add Group"/msgstr "Add Theme"/'  $message_source
+sed -i -e 's/^msgstr "Edit Group"/msgstr "Edit Theme"/'  $message_source
+sed -i -e 's/^msgstr "Create Group"/msgstr "Create Theme"/'  $message_source
+sed -i -e 's/^msgstr "Update Group"/msgstr "Update Theme"/'  $message_source
+sed -i -e 's/^msgstr "What are Groups?"/msgstr "What are Themes?"/'  $message_source
+sed -i -e 's/^"You can use CKAN Groups to create and manage collections of datasets. "/"You can use CKAN Themes to create and manage collections of datasets. "/'  $message_source
 
 # Compile the new translation
 python setup.py compile_catalog --use-fuzzy --locale ${locale}
