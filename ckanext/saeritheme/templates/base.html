@@ -1,0 +1,15 @@
+{% ckan_extends %}
+
+{# This file "extends" the base.html file #}
+{# /usr/lib/ckan/default/src/ckan/ckan/templates/base.html #}
+{# and replaces the "styles" block within in #}
+
+{% block styles %}
+
+  {# include the content of the original master "styles" block #}
+  {{ super() }}
+
+  <link rel="stylesheet" href="/saeritheme.css" />
+
+{% endblock %}
+

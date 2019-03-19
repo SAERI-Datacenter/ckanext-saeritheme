@@ -1,0 +1,15 @@
+/* This file provides additional CSS for SAERI */
+
+/* Change the colour of the bar at the top where your username is displayed */
+/* Commented out because we don't need it, this is just an example */
+/*
+.account-masthead {
+    background-color: rgb(40, 40, 40);
+}
+*/
+
+/* Replace the background image */
+body .hero {
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b5/MontserratWestIndies.jpg");
+	background-size: 100% 100%;
+}
