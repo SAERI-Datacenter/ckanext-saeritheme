@@ -21,12 +21,17 @@ body .hero {
 /* box is defined in /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.css */
 /* However I can't get ckan to obey this when adding it to the class in layout1.html */
 /* so I've had to manually add a height to the style there instead */
-.saeribox {
+
+.saeri_home_page_empty_space {
+	height: 300px;
+}
+
+.saeri_home_page_box {
   height: 300px;
   opacity: 0.5;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  //background-color: #ffffff;
+  //border: 1px solid #cccccc;
+  //border-radius: 4px;
+  //-webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  //box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
 }

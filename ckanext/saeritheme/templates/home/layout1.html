@@ -16,15 +16,15 @@
   <div class="container">
     <div class="row row1">
       <div class="col-md-6 col1">
-        <div class="module-content saeribox" style="height:300px;">
+        <div class="module-content saeri_home_page_empty_space">
         <!-- removed "box" from the list of classes and replaced with saeribox -->
         <!-- however that's ignored! so added an explicit height to the style. -->
-          <xheader>
+          <header class="saeri_home_page_box">
             {% set intro = g.site_intro_text %}
             {% if intro %}
               {{ h.render_markdown(intro) }}
             {% endif %}
-          </xheader>
+          </header>
         </div>
         {% block promoted %}
           {# commented out the promoted snippet because we use our own code inside header above #}
