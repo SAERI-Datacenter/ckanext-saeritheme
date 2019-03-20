@@ -1,12 +1,50 @@
-{% ckan_extends %}
-
-{# This file "extends" the home page so that we can replace parts of it #}
-
-{# arb replaced the content of the featured_group with an activity stream  #}
+{# We would normally use ckan_extends to modify the behaviour of the original file #}
+{# /usr/lib/ckan/default/src/ckan/ckan/templates/home/layout1.html #}
+{# however it has four squares: #}
+{#       promoted | search                #}
+{# featured_group | featured_organization #}
+{# but we only want search on the first row and a list of groups on the second row #}
+{# so we replace the whole thing layout1.html page with the content below. #}
 {# See http://docs.ckan.org/en/2.8/theming/templates.html  #}
-{# However it dumps HTML instead of activity so commented it out again #}
-{# by changing the double curly brackets to single curly plus hash #}
 
-{# block featured_group #}
-  {# h.recently_changed_packages_activity_stream(limit=4) #}
-{# endblock #}
+{# The background image is defined in saeritheme.css #}
+
+{# NB. when trying to use this we get raw html rendered #}
+{# { h.recently_changed_packages_activity_stream(limit=4) } #}
+
+<div role="main" class="hero">
+  <div class="container">
+    <div class="row row1">
+      <div class="col-md-6 col1">
+        <div class="module-content saeribox" style="height:300px;">
+        <!-- removed "box" from the list of classes and replaced with saeribox -->
+        <!-- however that's ignored! so added an explicit height to the style. -->
+          <xheader>
+            {% set intro = g.site_intro_text %}
+            {% if intro %}
+              {{ h.render_markdown(intro) }}
+            {% endif %}
+          </xheader>
+        </div>
+        {% block promoted %}
+          {# commented out the promoted snippet because we use our own code inside header above #}
+          {# % snippet 'home/snippets/promoted.html' % #}
+        {% endblock %}
+      </div>
+      <div class="col-md-6 col2">
+        {% block search %}
+          {# we use the built-in search snippet #}
+          {% snippet 'home/snippets/search.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+<div role="main">
+  <div class="container">
+    <div class="row row2">
+      {# we've provided our own helper function to get a list of groups/themes #}
+      {% snippet 'group/snippets/group_list.html', groups=h.saeritheme_get_groups_list() %}
+    </div>
+  </div>
+</div>

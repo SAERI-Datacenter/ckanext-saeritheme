@@ -18,12 +18,31 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+# This is a "helper" function for templates so they can get a list of groups
+
+def get_groups_list():
+    '''Return a sorted list of the groups with the most datasets.'''
+
+    # Get a list of all the site's groups from CKAN, sorted by number of
+    # datasets.
+    groups = toolkit.get_action('group_list')(
+        data_dict={'sort': 'package_count desc', 'all_fields': True})
+
+    # Truncate the list to the 20 most popular groups only.
+    groups = groups[:20]
+
+    return groups
+
+
+# The main class constructor
 
 class SaerithemePlugin(plugins.SingletonPlugin):
     ''' SAERI theme plugin
     '''
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IFacets, inherit=True) # to add a search filter facet (need to inherit to get the organization_facets attribute)
+    plugins.implements(plugins.ITemplateHelpers)      # to add template helper functions
+
 
     # IConfigurer
 
@@ -44,3 +63,14 @@ class SaerithemePlugin(plugins.SingletonPlugin):
 
         # Return the updated facet dict.
         return facets_dict
+
+    def get_helpers(self):
+        '''Register the get_groups_list() function above as a template
+        helper function.
+
+        '''
+        # Template helper function names should begin with the name of the
+        # extension they belong to, to avoid clashing with functions from
+        # other extensions.
+        return {'saeritheme_get_groups_list': get_groups_list}
+

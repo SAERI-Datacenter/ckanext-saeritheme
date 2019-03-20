@@ -1,1 +1,11 @@
 {# Replace the 'promoted group' section with a blank to prevent random groups from appearing on the home page #}
+{# or extend it to keep the original #}
+{# % ckan_extends % #}
+    {% snippet "group/snippets/group_list.html" %}
+<ul class="media-grid" data-module="media-grid">
+	{% block group_list_inner %}
+  {% for group in groups %}
+    {% snippet "group/snippets/group_item.html", group=group, position=loop.index %}
+  {% endfor %}
+  {% endblock %}
+</ul>

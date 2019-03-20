@@ -13,3 +13,19 @@ body .hero {
 	background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b5/MontserratWestIndies.jpg");
 	background-size: 100% 100%;
 }
+
+/* Define the size of the part of the home page which is to the left of the search field */
+/* The bottom of the search field is aligned with the bottom of this left-hand field */
+/* so we need to make it large enough to bring the search field down to the bottom of the background image */
+/* If the box contains content then it it will be displayed inside a box with this style */
+/* box is defined in /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.css */
+/* However I can't get ckan to obey this when adding it to the class in layout1.html */
+/* so I've had to manually add a height to the style there instead */
+.saeribox {
+  height: 300px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
