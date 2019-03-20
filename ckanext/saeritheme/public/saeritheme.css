@@ -23,6 +23,7 @@ body .hero {
 /* so I've had to manually add a height to the style there instead */
 .saeribox {
   height: 300px;
+  opacity: 0.5;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 4px;
