@@ -14,8 +14,7 @@ import os # for os.path.isfile
 from ckanapi import RemoteCKAN
 
 # Configuration
-#csv_filename="topic_categories.csv"
-csv_filename="group_list.csv"
+csv_filename="topic_categories.csv"
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 logo_dir = "../public/logo"
 
