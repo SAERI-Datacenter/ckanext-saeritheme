@@ -8,7 +8,7 @@ user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 from ckanapi import RemoteCKAN
 from pprint import pprint
 
-ckan = RemoteCKAN('http://%s' % ip, apikey=api_key, user_agent=user_agent)
+ckan = RemoteCKAN('http://%s' % ckan_ip, apikey=api_key, user_agent=user_agent)
 
 result = ckan.action.organization_list(all_fields=True)
 pprint(result)
