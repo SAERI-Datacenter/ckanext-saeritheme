@@ -31,9 +31,9 @@ it is hard-coded in here: `/usr/lib/ckan/default/src/ckan/ckan/lib/dictization/m
 
 Restart the web server with `sudo service apache2 restart`
 
-## Customising
+## Creating organisations 
 
-The ckanext/saeritheme/tools directory contains some tools for creating organisations.
+Navigate into the ckanext/saeritheme/tools directory to read how to create organisations.
 
 ## Updating
 
