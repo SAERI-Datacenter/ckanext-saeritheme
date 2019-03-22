@@ -10,6 +10,7 @@ import urllib
 import json
 from pprint import pprint
 import csv
+import sys
 import os # for os.path.isfile
 from ckanapi import RemoteCKAN
 
