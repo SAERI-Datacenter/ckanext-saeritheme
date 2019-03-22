@@ -14,7 +14,8 @@ import os # for os.path.isfile
 from ckanapi import RemoteCKAN
 
 # Configuration
-csv_filename="topic_categories.csv"
+#csv_filename="topic_categories.csv"
+csv_filename="group_list.csv"
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 logo_dir = "../public/logo"
 
@@ -85,7 +86,7 @@ def add_group(row):
 	group_dict['image_url'] = image_with_path
 	if group_desc:
 		group_dict['description'] = group_desc
-	print("Using %s" % group_dict)
+	print("Running %s with %s" % (create_or_update_action, group_dict))
 
 	result = ckan.call_action(create_or_update_action, group_dict)
 	if result['approval_status'] == 'approved':
@@ -100,6 +101,10 @@ def add_group(row):
 
 # -----------------------------------------------------------------------
 # MAIN
+
+# CSV filename is first parameter
+if len(sys.argv) > 1:
+	csv_filename = sys.argv[1]
 
 # Read the configuration
 ckan_ip = open("ckan_ip.txt").read().replace('\n','')

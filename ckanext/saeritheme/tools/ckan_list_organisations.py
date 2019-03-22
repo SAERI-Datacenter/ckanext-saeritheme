@@ -1,9 +1,8 @@
 #!/usr/bin/env python2
 
-# Configuration:
-ip = "172.16.92.142"
-api_key = "0317c21c-7d04-48df-8f1b-9989edbd6165"
-
+# Read the configuration
+ckan_ip = open("ckan_ip.txt").read().replace('\n','')
+api_key = open("ckan_api_key.txt").read().replace('\n','')
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 
 from ckanapi import RemoteCKAN

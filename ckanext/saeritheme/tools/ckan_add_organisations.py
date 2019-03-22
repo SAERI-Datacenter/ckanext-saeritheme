@@ -16,7 +16,8 @@ import os # for os.path.isfile
 from ckanapi import RemoteCKAN
 
 # Configuration
-csv_filename="grouped_organisations_ready_arb.csv"
+#csv_filename="grouped_organisations_ready_arb.csv"
+csv_filename="organisation_list.csv"
 user_agent = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 logo_dir = "../public/logo"
 logo_unknown_path = "/logo/nologo_cube.png"
@@ -104,6 +105,10 @@ def add_organisation(row):
 
 # -----------------------------------------------------------------------
 # MAIN
+
+# CSV filename is first parameter
+if len(sys.argv) > 1:
+	csv_filename = sys.argv[1]
 
 # Read the configuration
 ckan_ip = open("ckan_ip.txt").read().replace('\n','')
