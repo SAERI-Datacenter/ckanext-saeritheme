@@ -1,0 +1,13 @@
+{% ckan_extends %}
+{# this file extends the original #}
+{# /usr/lib/ckan/default/src/ckan/ckan/templates/group/snippets/group_item.html #}
+{# so that we can change or replace blocks #}
+
+{# remove the number of packages from the description of the group #}
+{% block datasets %}
+{% endblock %}
+
+{# make the icons smaller by copying the original <img> tag but adding saeri_group_icon to the list of classes #}
+{% block image %}
+  <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" class="media-image img-responsive saeri_group_icon">
+{% endblock %}
