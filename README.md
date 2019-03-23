@@ -58,7 +58,11 @@ Images (and other resources) which are required by the HTML files can be placed 
 
 Home page logo - we display the SAERI logo instead of the "promoted" field by editing: `ckanext/saeritheme/templates/home/snippets/promoted.html`. The logo image is stored in the public directory (see above).
 
-Home page showing recent activity (new/updated datasets) - this could be enabled by uncommenting the line in `ckanext/saeritheme/templates/home/layout1.html` but last time I tried it only raw HTML was displayed.
+List of groups on the home page - this is done in layout1.html using the helper function from our plugin.py to return a list of groups. The helper function returns them sorted by name but could be changed to sort by number of datasets.
+The rendering of each group is changed in the snippet `templates/group/snippets/group_item.html` so that the number of datasets is hidden.
+Also it changes the CSS used for the icon img so that the icon size can be controlled in `saerickan.css`
+
+Home page showing recent activity (new/updated datasets) - this could be enabled by uncommenting the line in `ckanext/saeritheme/templates/home/layout1.html`.
 
 Map display - there are two places to edit. One is when searching for datasets which cover a specific area, the map needs to be displayed on the search page; done by `ckanext/saeritheme/templates/package/search.html`. The other is when creating/updating a dataset, the map showing the spatial extent is displayed at the bottom of the page by `ckanext/saeritheme/templates/package/read.html`. If you want the map displayed in the left-hand column (sidebar) the use `ckanext/saeritheme/templates/package/read_base.html` instead by commenting/uncommenting the line in both files as appropriate.
 
