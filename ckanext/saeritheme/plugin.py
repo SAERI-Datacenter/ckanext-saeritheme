@@ -1,3 +1,5 @@
+# 1.04 arb Sat 23 Mar 22:22:04 GMT 2019 - sort by name not by number of packages in group
+# 1.03 arb                              - added get_groups_list helper function for home page layout1.html
 # 1.02 arb Thu Jan 17 16:23:06 GMT 2019 - added search filter facets
 
 # This plugin defines the theme for CKAN.  All it does is
@@ -14,6 +16,10 @@
 # https://stackoverflow.com/questions/32175329/how-to-add-a-search-filter-facet-option-for-a-custom-field-in-ckan
 # https://jira.ucar.edu/browse/DSET-168 (solve AttributeError: 'SaerithemePlugin' object has no attribute 'organization_facets')
 
+# Configuration
+# Define the way the groups are sorted when listed on the home page
+group_sort_field = 'name asc' # 'name asc' OR 'package_count desc'
+
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
@@ -26,9 +32,9 @@ def get_groups_list():
     # Get a list of all the site's groups from CKAN, sorted by number of
     # datasets.
     groups = toolkit.get_action('group_list')(
-        data_dict={'sort': 'package_count desc', 'all_fields': True})
+        data_dict={'sort': group_sort_field, 'all_fields': True})
 
-    # Truncate the list to the 20 most popular groups only.
+    # Truncate the list to the top 20 (by name or most popular) groups only.
     groups = groups[:20]
 
     return groups

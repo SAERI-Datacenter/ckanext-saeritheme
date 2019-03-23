@@ -35,3 +35,11 @@ body .hero {
   //-webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
   //box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
 }
+
+/* Define how the group icon looks */
+/* This is used inside the snippet which renders groups on the home page layout1.html */
+/* /usr/lib/ckan/default/src/ckanext-saeritheme/ckanext/saeritheme/templates/group/snippets/group_item.html */
+.saeri_group_icon {
+	//
+	max-width: 50px;
+}

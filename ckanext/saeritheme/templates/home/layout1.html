@@ -44,6 +44,9 @@
   <div class="container">
     <div class="row row2">
       {# we've provided our own helper function to get a list of groups/themes #}
+      {# see plugin.py in the saeritheme plugin #}
+      {# each group is rendered using the code in this file: #}
+      {# "/usr/lib/ckan/default/src/ckan/ckan/templates/group/snippets/group_item.html" #}
       {% snippet 'group/snippets/group_list.html', groups=h.saeritheme_get_groups_list() %}
     </div>
   </div>
