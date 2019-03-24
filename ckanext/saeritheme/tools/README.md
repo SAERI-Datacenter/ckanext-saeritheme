@@ -31,13 +31,15 @@ Run `./ckan_add_groups.py`
 
 If a group already exists then it will be updated.
 
+NOTE: See Troubleshooting below.
+
 ## Rename Groups to Themes
 
 Run `rename_groups_to_themes.sh` to change the wording of Groups in the interface to use Themes instead. Does not replace all occurrences, only the main ones. This modifies your ckan installation outside this plugin.
 
 # Organisations
 
-List of organisations to be created inside CKAN.
+List of organisations to be created inside CKAN. File should be called `organisation_list.csv`
 
 Master list was grouped_organisations_ready_2018-12-07.csv
 
@@ -59,6 +61,8 @@ Run `./ckan_add_organisations.py`
 
 If an organisation already exists then it will be updated.
 
+NOTE: See Troubleshooting below.
+
 ## Update the organisations
 
 There are some organisations which do not have a logo image.
@@ -67,6 +71,17 @@ This could be modified to show the nologo_cube.png file if required.
 
 Do NOT change the organisation code because it will have been
 embedded into dataset records in the database.
+
+## Troubleshooting
+
+The behavior when a group/organisation already exists is to 'update' it.
+This means to replace the original values with the new values.
+If any changes have been made within CKAN to add an attribute to the group/org which does not exist in the new info being uploaded from the CSV then it will be lost.
+The alternative behaviour is to 'patch' where only the values specfied in the CSV are upload and other existing values are preserved.
+You need to edit the script to change `package_update` to `package_patch` if you want this behaviour.
+
+There is one slight problem when updating the logo image for a group/org; sometimes the logo is not updated.
+If this happens (and you've definitely restarted apache2 and forcibly-reloaded the browser window without caching) you need to edit the script and enable the `clear_upload` flag then re-run the script.
 
 ## Changes by arb
 
