@@ -3,11 +3,18 @@
 {# /usr/lib/ckan/default/src/ckan/ckan/templates/group/snippets/group_item.html #}
 {# so that we can change or replace blocks #}
 
-{# remove the number of packages from the description of the group #}
-{% block datasets %}
-{% endblock %}
+{# remove the 'number of datasets' from the description of the group #}
+{# but only if the homepage variable is 1, which is only set in layout1.html #}
 
-{# make the icons smaller by copying the original <img> tag but adding saeri_group_icon to the list of classes #}
+{% block datasets %}
+  {% if homepage==1 %}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock datasets %}
+
+{# we have copied exactly the original <img> tag but added saeri_group_icon to the list of classes #}
+{# this will allow you to add your own CSS in saerickan.css eg. to make the icons smaller #}
 {% block image %}
   <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" class="media-image img-responsive saeri_group_icon">
 {% endblock %}

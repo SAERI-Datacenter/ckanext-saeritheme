@@ -1,0 +1,11 @@
+{% ckan_extends %}
+{# this file extends the original #}
+{# /usr/lib/ckan/default/src/ckan/ckan/templates/group/snippets/group_list.html #}
+{# so that we can change or replace blocks #}
+
+{# all we have done is copy exactly the original block, but pass on the homepage variable to the child #}
+{% block group_list_inner %}
+  {% for group in groups %}
+    {% snippet "group/snippets/group_item.html", group=group, position=loop.index, homepage=homepage %}
+  {% endfor %}
+{% endblock %}
