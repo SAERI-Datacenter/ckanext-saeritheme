@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# 1.04 arb Mon 25 Mar 18:57:56 GMT 2019 - handle change to image_url better
 # 1.03 arb Tue 29 Jan 12:42:01 GMT 2019 - use nologo_cube.png if no logo specified or found.
 # 1.02 arb Mon 28 Jan 14:53:57 GMT 2019 - read config from files.
 # 1.01 arb Mon Jan 21 13:58:21 GMT 2019 - update if already exists. Check logo file exists.
@@ -48,6 +49,7 @@ def get_existing_organisations_dict():
 # Return a list of organisation names, eg. ['BAS', 'FIG']
 def get_existing_organisations_names(organisations_data):
 	organisations_list = [x['name'] for x in organisations_data]
+	#pprint(organisations_list)
 	return(organisations_list)
 
 
@@ -85,7 +87,11 @@ def add_organisation(row):
 		create_or_update_action = 'organization_patch' # organization_patch OR organization_update (latter cleans it all first)
 		# Find the id of the given organisation to update this exact one
 		org_dict['id'] = [i for i in organisations_data if i['name']==name_lowercase][0]['id']
-		#org_dict['clear_upload'] = True # so that a change to image_url is forced, only use if image has actually changed
+		# If image url changes we need to force ckan to notice this
+		# Don't set clear_upload under any other circumstances
+		if not image_with_path == [i for i in organisations_data if i['name']==name_lowercase][0]['image_url']:
+			print("Image changed so trying to force a new upload")
+			org_dict['clear_upload'] = True
 
 	# Create a dictionary with the info we need to add to CKAN
 	org_dict['name'] = name_lowercase

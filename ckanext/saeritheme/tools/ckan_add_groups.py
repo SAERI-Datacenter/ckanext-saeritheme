@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# 1.01 arb Mon 25 Mar 18:57:56 GMT 2019 - handle change to image_url better
 # 1.00 arb 
 
 # Create all groups/themes/topic categories from a CSV file.
@@ -75,10 +76,14 @@ def add_group(row):
 	create_or_update_action = 'group_create'
 	if group_name in groups_names:
 		print("NOTE: %s already exists, will update" % group_name)
-		create_or_update_action = 'group_patch' # not group_update which cleans it all first
+		create_or_update_action = 'group_update' # not group_update which cleans it all first
 		# Find the id of the given group to update this exact one
 		group_dict['id'] = [i for i in groups_data if i['name']==group_name][0]['id']
-		#group_dict['clear_upload'] = True # so that a change to image_url is forced
+		# If image url changes we need to force ckan to notice this
+		# Don't set clear_upload under any other circumstances
+		if not image_with_path == [i for i in group_data if i['name']==group_name][0]['image_url']:
+			print("Image changed so trying to force a new upload")
+			group_dict['clear_upload'] = True
 
 	# Create a dictionary with the info we need to add to CKAN
 	group_dict['name'] = group_name
@@ -122,8 +127,9 @@ groups_names = get_existing_groups_names(groups_data)
 
 # Process each row
 for row in reader:
-	#print("Add group: %s" % row['group'])
+	print("Add group: %s" % row['group'])
 	add_group(row)
+	exit(0)
 
 # Close
 RemoteCKAN.close(ckan)
