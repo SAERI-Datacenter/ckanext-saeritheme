@@ -55,7 +55,7 @@ class SaerithemePlugin(plugins.SingletonPlugin):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        #toolkit.add_resource('fanstatic', 'saeritheme') # not needed
+        toolkit.add_resource('fanstatic', 'saeritheme') # needed to add .js
 
     def dataset_facets(self, facets_dict, package_type):
         '''Add new search facet (filter) for datasets.
@@ -79,4 +79,3 @@ class SaerithemePlugin(plugins.SingletonPlugin):
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
         return {'saeritheme_get_groups_list': get_groups_list}
-

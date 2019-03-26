@@ -12,51 +12,48 @@
 {# NB. when trying to use this we get raw html rendered #}
 {# { h.recently_changed_packages_activity_stream(limit=4) } #}
 
-<div role="main" class="hero">
-  <div class="container">
-    <div class="row row1">
-      <div class="col-md-6 col1">
-        <div class="module-content saeri_home_page_empty_space">
-        <!-- removed "box" from the list of classes and replaced with saeribox -->
-        <!-- however that's ignored! so added an explicit height to the style. -->
-          <header class="saeri_home_page_box">
-            {% set intro = g.site_intro_text %}
-            {% if intro %}
-              {{ h.render_markdown(intro) }}
-            {% endif %}
-          </header>
-        </div>
-        {% block promoted %}
-          {# commented out the promoted snippet because we use our own code inside header above #}
-          {# % snippet 'home/snippets/promoted.html' % #}
-        {% endblock %}
-      </div>
-      <div class="col-md-6 col2">
-        {% block search %}
+<div class="homepage-slider-ng">
+  <div class="images-wrapper">
+    <div class="text-wrapper" style="background-image:url(media/fi/P1050796.JPG)"></div>
+    <div class="text-wrapper" style="background-image:url(media/fi/P1060902.JPG);display:none;"></div>
+    <div class="text-wrapper" style="background-image:url(media/fi/P1070744.JPG);display:none;"></div>
+  </div>
+
+  <div class="boxes-wrapper container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-6">
+        <div class="home-box">
+          {% block search %}
           {# we use the built-in search snippet #}
           {% snippet 'home/snippets/search.html' %}
-        {% endblock %}
+          {% endblock %}
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <div role="main">
   <div class="container">
-    <div class="row row2">
+    <div class="row">
       {# we've provided our own helper function to get a list of groups/themes #}
       {# see plugin.py in the saeritheme plugin #}
       {# each group is rendered using the code in this file: #}
       {# "/usr/lib/ckan/default/src/ckan/ckan/templates/group/snippets/group_item.html" #}
       {% snippet 'group/snippets/group_list.html', groups=h.saeritheme_get_groups_list() %}
     </div>
-  </div>
-</div>
-<div role="main">
-  <div class="container">
-    <div class="row row3">
-    	{# This shows the recent activity but has been modified from #}
-    	{# what is in the docs to prevent raw html being displayed #}
-		{{ h.recently_changed_packages_activity_stream(limit=4)|safe }}
-    </div>
+
+    <div class="row">
+        <div id="latest-addings" class="box">
+          <header class="module-heading">
+            <h2>Latest addings</h2>
+          </header>
+          <section class="module-content">
+            {# This shows the recent activity but has been modified from #}
+            {# what is in the docs to prevent raw html being displayed #}
+            {{ h.recently_changed_packages_activity_stream(limit=4)|safe }}
+          </section>
+        </div>
+      </div>
   </div>
 </div>

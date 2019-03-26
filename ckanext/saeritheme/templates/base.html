@@ -9,7 +9,12 @@
   {# include the content of the original master "styles" block #}
   {{ super() }}
 
-  <link rel="stylesheet" href="/saeritheme.css" />
+  {% resource 'saeritheme/saeritheme.css' %}
 
 {% endblock %}
 
+{%- block scripts %}
+
+  {% resource 'saeritheme/homepage-slider.js' %}
+
+{% endblock -%}
