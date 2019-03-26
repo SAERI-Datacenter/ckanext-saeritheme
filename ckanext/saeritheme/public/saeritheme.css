@@ -1,0 +1,60 @@
+/* This file provides customized CSS for SAERI */
+
+.saeri_home_page_box {
+  height: 300px;
+  opacity: 0.5;
+}
+
+/* homepage customization theme colours */
+
+/* SAERI's dark_blue = #004368 */
+.account-masthead,
+.homepage .module-search .tags {
+	background: #004368;
+}
+
+/* SAERI's pastel_light_blue = #4f85c0 */
+.masthead,
+.site-footer,
+.homepage .module-search .module-content {
+	background: #4f85c0;
+}
+
+.account-masthead .account .notifications a span,
+.account-masthead .account ul li a:hover,
+.masthead .navigation .nav-pills li a:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.masthead .navigation .nav-pills li.active a {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.activity {
+	background: none;
+}
+
+span.actor,
+.activity .item .icon {
+	display: none;
+}
+
+.activity .item p {
+	visibility: hidden;
+	margin-left: 0;
+	font-size: 1.2em;
+}
+
+.activity .item p > span {
+	visibility: visible;
+	float: left;
+}
+
+.activity .item .date {
+	padding-left: 1em;
+	line-height: 2em;
+}
+
+#latest-addings {
+	margin-top: 2em;
+}
