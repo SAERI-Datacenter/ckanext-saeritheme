@@ -7,10 +7,8 @@
 {# so we replace the whole thing layout1.html page with the content below. #}
 {# See http://docs.ckan.org/en/2.8/theming/templates.html  #}
 
-{# The background image is defined in saeritheme.css #}
-
-{# NB. when trying to use this we get raw html rendered #}
-{# { h.recently_changed_packages_activity_stream(limit=4) } #}
+{% resource 'saeritheme/homepage-slider.css' %}
+{% resource 'saeritheme/homepage-slider.js' %}
 
 <div class="homepage-slider-ng">
   <div class="images-wrapper">
