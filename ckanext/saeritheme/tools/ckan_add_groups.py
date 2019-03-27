@@ -37,16 +37,16 @@ logo_dir = "../public/logo"
 # Return a list of group names, eg. ['biota', 'etc']
 def get_existing_groups_dict():
 	groups_data = ckan.action.group_list(all_fields=True)
-	print("Existing groups:")
-	pprint(groups_data)
+	#print("Existing groups:")
+	#pprint(groups_data)
 	return groups_data
 
 # ---------------------------------------------------------------------
 # Return a list of organisation names, eg. ['BAS', 'FIG']
 def get_existing_groups_names(groups_data):
 	groups_list = [x['name'] for x in groups_data]
-	print("Existing group names:")
-	pprint(groups_list)
+	#print("Existing group names:")
+	#pprint(groups_list)
 	return(groups_list)
 
 
@@ -81,7 +81,7 @@ def add_group(row):
 		group_dict['id'] = [i for i in groups_data if i['name']==group_name][0]['id']
 		# If image url changes we need to force ckan to notice this
 		# Don't set clear_upload under any other circumstances
-		if not image_with_path == [i for i in group_data if i['name']==group_name][0]['image_url']:
+		if not image_with_path == [i for i in groups_data if i['name']==group_name][0]['image_url']:
 			print("Image changed so trying to force a new upload")
 			group_dict['clear_upload'] = True
 

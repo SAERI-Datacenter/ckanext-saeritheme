@@ -10,14 +10,14 @@
 /* SAERI's dark_blue = #004368 */
 .account-masthead,
 .homepage .module-search .tags {
-	background: #004368;
+/*	background: #004368; */
 }
 
 /* SAERI's pastel_light_blue = #4f85c0 */
 .masthead,
 .site-footer,
 .homepage .module-search .module-content {
-	background: #4f85c0;
+/*	background: #4f85c0; */
 }
 
 .account-masthead .account .notifications a span,
