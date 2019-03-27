@@ -18,7 +18,7 @@
 
 # Configuration
 # Define the way the groups are sorted when listed on the home page
-group_sort_field = 'display_name asc' # 'name asc' OR 'package_count desc'
+group_sort_field = 'name asc' # 'name asc' OR 'package_count desc'
 
 
 import ckan.plugins as plugins
