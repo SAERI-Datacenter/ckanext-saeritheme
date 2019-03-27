@@ -18,11 +18,15 @@
 
 # Configuration
 # Define the way the groups are sorted when listed on the home page
-group_sort_field = 'name asc' # 'name asc' OR 'package_count desc'
+group_sort_field = 'display_name asc' # 'name asc' OR 'package_count desc'
 
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import logging
+
+log = logging.getLogger(__name__)
+
 
 # This is a "helper" function for templates so they can get a list of groups
 
@@ -33,6 +37,9 @@ def get_groups_list():
     # datasets.
     groups = toolkit.get_action('group_list')(
         data_dict={'sort': group_sort_field, 'all_fields': True})
+
+    # Sort by the 'display_name' field, makes more sense than sorting by 'name'
+    groups = sorted(groups, key=lambda k: k['display_name']) 
 
     # Truncate the list to the top 20 (by name or most popular) groups only.
     groups = groups[:20]
@@ -78,4 +85,5 @@ class SaerithemePlugin(plugins.SingletonPlugin):
         # Template helper function names should begin with the name of the
         # extension they belong to, to avoid clashing with functions from
         # other extensions.
+        log.debug("SaerithemePlugin adding saeritheme_get_groups_list helper")
         return {'saeritheme_get_groups_list': get_groups_list}
