@@ -1,10 +1,14 @@
 {# This file extends the search to display a map #}
 {# See /usr/lib/ckan/default/src/ckan/ckan/templates/package/search.html #}
 
+{# You can change the default extent shown on the map so, for example, it can be narrowed down to just Montserrat rather than displaying the whole world #}
+{# Change the default_extent below, coordinates are [bottom left], [top right] #}
+{# each coordinate is [lat, lon] #}
+
 {% ckan_extends %}
 
 {% block secondary_content %}
-  {% snippet "spatial/snippets/spatial_query.html", default_extent="[[16.152916, -62.803520], [17.378428, -61.350700]]"  %}
+  {% snippet "spatial/snippets/spatial_query.html", default_extent="[[16.660399, -62.269594], [16.829728, -62.095693]]" %}
   {# Insert the contents of the original featured_group block: #}
   {{ super() }}
 {% endblock %}
